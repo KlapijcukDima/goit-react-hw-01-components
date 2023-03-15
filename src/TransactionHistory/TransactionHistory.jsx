@@ -22,7 +22,7 @@ export const TransactionHistory = ({items}) => {
         <table>
         <thead>
           <tr style={{ backgroundColor: createColor() }}>
-            <th>Type</th>
+            <th className={css}>Type</th>
             <th>Amount</th>
             <th>Currency</th>
           </tr>
@@ -42,3 +42,11 @@ export const TransactionHistory = ({items}) => {
       </table>
     )
 };
+
+
+TransactionHistory.propTypes = {
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    anount: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
+}
