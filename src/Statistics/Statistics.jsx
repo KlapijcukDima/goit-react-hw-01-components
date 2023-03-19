@@ -19,14 +19,16 @@ const createColor = () => {
 export const Statistics = ({ title, stats }) => {
   return (
     <section className={css.statistics}>
-      <h2 className={css.title}>Upload stats</h2>
+      {title && <h2 className={css.title}>{title}</h2>}
 
       <ul className={css.stats__list}>
         {stats.map(({ id, label, percentage }) => {
           return (
-            <li className={css.stats}
-            key={id}
-            style={{backgroundColor: createColor() }}>
+            <li
+              className={css.stats}
+              key={id}
+              style={{ backgroundColor: createColor() }}
+            >
               <span className="label">{label}</span>
               <span className="percentage">{percentage}</span>
             </li>
@@ -37,8 +39,13 @@ export const Statistics = ({ title, stats }) => {
   );
 };
 
-
 Statistics.propTypes = {
-    label: PropTypes.string,
-    percentage: PropTypes.number,
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
 };
